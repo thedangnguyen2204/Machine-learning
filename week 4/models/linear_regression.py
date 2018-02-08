@@ -45,7 +45,7 @@ class LinearRegression(object):
       #                       END OF YOUR CODE                                #
       #########################################################################
 
-      if verbose and it % 100 == 0:
+      if verbose and it % 10000 == 0:
         print('iteration %d / %d: loss %f' % (it, num_iters, loss))
 
     return loss_history
@@ -63,7 +63,7 @@ class LinearRegression(object):
       array of length N, and each element is an integer giving the predicted
       class.
     """
-    y_pred = np.zeros(X.shape[0])
+    y_pred = np.zeros_like(X.shape[0])
     ###########################################################################
     # TODO:                                                                   #
     # Implement this method. Store the predicted labels in y_pred.            #
@@ -82,13 +82,13 @@ class LinearRegression(object):
     # TODO:                                                                 #
     # Calculate the loss value and gradient matrix with linear_loss_..      #
     #########################################################################
-    W = np.random.randn(X.shape[1], ) * 0.0001 
-    loss, grad = 0.0, np.zeros_like(W)
-    y_pred = X.dot(W)
+    # W = np.random.randn(X.shape[1], ) * 0.0001 
+    loss, grad = 0.0, np.zeros_like(self.W)
+    y_pred = X.dot(self.W)
     loss_array = y_pred - y
-    loss = sum(loss_array * loss_array) / (2 * len(y_pred))
+    loss = sum(loss_array * loss_array) / (2 * len(y_pred)) + np.sum([x**2 for x in self.W])  *reg 
     temp = np.array(y_pred - y)
-    grad = (X.transpose().dot(temp)) / len(y_pred)
+    grad = (X.transpose().dot(temp)) / len(y_pred)  + 2*self.W*reg
     #########################################################################
     #                       END OF YOUR CODE                                #
     #########################################################################
