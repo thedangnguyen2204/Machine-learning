@@ -27,14 +27,11 @@ def linear_loss_naive(W, X, y, reg):
     # here, it is easy to run into numeric instability. Don't forget the        #
     # regularization!                                                           #
     #############################################################################
-    y_pred = [sum([k*p for k, p in zip(x, W)]) for x in X]
-    for _y, _y_real in zip(y_pred, y):
-        loss += (_y - _y_real) ** 2
-    loss /= 2 * len(y_pred)
-    dW = sum([_y - _y_real]*x for x, _y, _y_real in zip(X, y_pred, y)) / len(y_pred)
+    pass
     #############################################################################
     #                          END OF YOUR CODE                                 #
     #############################################################################
+
     return loss, dW
 
 
@@ -54,11 +51,7 @@ def linear_loss_vectorized(W, X, y, reg):
     # here, it is easy to run into numeric instability. Don't forget the        #
     # regularization!                                                           #
     #############################################################################
-    y_pred = X.dot(W)
-    loss_array = y_pred - y
-    loss = sum(loss_array * loss_array) / (2 * len(y_pred))
-    temp = np.array(y_pred - y)
-    dW = (X.transpose().dot(temp)) / len(y_pred)
+    pass
     #############################################################################
     #                          END OF YOUR CODE                                 #
     #############################################################################
