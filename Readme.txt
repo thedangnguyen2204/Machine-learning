@@ -1,3 +1,5 @@
-Nguyen Dang The
-K60CA
-MSSV: 15020912
+Sinh Viên: Nguyễn Đăng Thế
+
+Lớp: K60CA
+
+MSSV: 1502 0912
